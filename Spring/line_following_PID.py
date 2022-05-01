@@ -92,10 +92,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     contours, hierarchy = cv2.findContours(mask.copy(),1,cv2.CHAIN_APPROX_NONE)
 
     # Find x-axis centroid of largest contour and cut power to appropriate motor
-    # to recenter camera on centroid.
-    # This control algorithm was written referencing guide:
-# Author: Einsteinium Studios
-# Availability: http://einsteiniumstudios.com/beaglebone-opencv-line-following-robot.html
     if len(contours) > 0:
     # Find largest contour area and image moments
         c = max(contours, key = cv2.contourArea)
