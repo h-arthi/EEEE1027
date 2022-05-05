@@ -183,7 +183,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                     if cxG > 0:
                         cx = cxG
                         print('cxG =', cxG)
-# Author: Einsteinium Studios
+
     if len(contours) > 0:
         # Find largest contour area and image moments
             c = max(contours, key = cv2.contourArea)
