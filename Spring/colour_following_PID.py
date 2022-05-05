@@ -115,9 +115,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     contours3,_ = cv2.findContours(redMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     contours4,_ = cv2.findContours(greenMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     cv2.imshow("green mask",results3)    
-#     cv2.imshow("blue mask",results)
+    cv2.imshow("blue mask",results)
     cv2.imshow("yellow mask",results1)
-#     cv2.imshow("red mask",results2)
+    cv2.imshow("red mask",results2)
 
 
     
@@ -127,7 +127,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     # Find x-axis centroid of largest contour and cut power to appropriate motor
 
-    '''if len(contours1) > 0:
+    if len(contours1) > 0:
         cn = max(contours1, key = cv2.contourArea)
         if (cv2.contourArea(cn)) < 7800 and (cv2.contourArea(cn)) < 8300:
             M1 = cv2.moments(cn)
@@ -139,8 +139,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                     cxB = int(x/y)
                     if cxB > 0:
                         cx = cxB
-                        print('cxB =' ,cxB)'''
-    '''if len(contours3) > 0:
+                        print('cxB =' ,cxB)
+    if len(contours3) > 0:
                 cn3 = max(contours3, key = cv2.contourArea)
                 if (cv2.contourArea(cn3)) < 7000 and (cv2.contourArea(cn3)) < 8300:
                     M3 = cv2.moments(cn3)
@@ -152,7 +152,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                             cxR = int(x2/y2)
                             if cxR > 0:
                                 cx = cxR
-                                print('cxR =' ,cxR)'''
+                                print('cxR =' ,cxR)
     if len(contours2) > 0:
         cn2 = max(contours2, key = cv2.contourArea)
         M2 = cv2.moments(cn2)
@@ -191,15 +191,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             # Find x-axis centroid using image moments
             cx = int(M['m10']/M['m00'])
             print("cx =",cx)
-                                   
-    '''if cx >= 100:
-        left()
-    if cx < 60 and cx > 100:
-        straight()
-    if cx <= 60:
-        right()'''
-             
-         
+                                           
     error = 100 - cx
     derivative = error - last_error
     speedL = basespeed - (error * KP + derivative * KD)
